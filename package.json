@@ -40,9 +40,6 @@
     "test": "kyt test",
     "test-watch": "kyt test -- --watch",
     "test-coverage": "kyt test -- --coverage",
-    "lint": "npm run lint-script && npm run lint-style",
-    "lint-script": "kyt lint-script",
-    "lint-style": "kyt lint-style",
     "kyt:help": "kyt --help"
   }
 }
