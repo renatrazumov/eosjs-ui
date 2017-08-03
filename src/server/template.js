@@ -13,14 +13,14 @@ export default vo => `
     <meta httpEquiv="Content-Language" content="en" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link id="favicon" rel="shortcut icon" href="/kyt-favicon.png" sizes="16x16 32x32" type="image/png" />
+    <link id="favicon" rel="shortcut icon" href="/favicon.ico" sizes="16x16 32x32" type="image/ico" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     ${vo.mainCSSBundle
       ? '<link rel="stylesheet" type="text/css" href="' + vo.mainCSSBundle + '">'
       : ''}
 
-    <title>Universal React Starter Kyt</title>
+    <title>Eos Admin Interface</title>
   </head>
 
   <body>

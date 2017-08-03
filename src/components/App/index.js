@@ -2,10 +2,13 @@ import React, { PropTypes } from 'react';
 import Link from 'react-router/lib/Link';
 import styles from './styles.scss';
 
-function App({ children }) {
+import {Provider} from 'mobx-react'
+import chain from '../../store/chain'
+
+function App({ children, params }) {
+  const homePage = Object.keys(params).length === 0
   return (
     <div>
-      <i className={styles.logo} />
       <ul className={styles.nav}>
         <li className={styles.navItem}>
           <Link className={styles.link} to="/">
@@ -13,13 +16,21 @@ function App({ children }) {
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link className={styles.link} to="/tools">
-            Tools
+          <Link className={styles.link} to="/eos">
+            Eos
+          </Link>
+        </li>
+        <li className={styles.navItem}>
+          <Link className={styles.link} to="/inita">
+            InitA
           </Link>
         </li>
       </ul>
+      {homePage && <i className={styles.logo} />}
       <div className={styles.content}>
-        {children}
+        <Provider chain={chain}>
+          {children}
+        </Provider>
       </div>
     </div>
   );
@@ -27,6 +38,7 @@ function App({ children }) {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
+  params: PropTypes.object.isRequired
 };
 
 export default App;
