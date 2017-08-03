@@ -40,6 +40,11 @@ This is an Isomorphic React Web Application.
 * React Router [https://github.com/reactjs/react-router](https://github.com/reactjs/react-router)
 * Sass Modules [https://github.com/css-modules/css-modules](https://github.com/css-modules/css-modules)
 
+# Coding Standards
+
+* Write your best code yet
+* Be mindful of the diff
+
 # Environment
 
 Node 8+ and Browser
