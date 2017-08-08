@@ -23,12 +23,21 @@ const importAccountInfo = (nextState, cb) => {
     });
 };
 
+const importTransfer = (nextState, cb) => {
+  import(/* webpackChunkName: "accountInfo" */ '../components/Transfer')
+    .then(module => cb(null, module.default))
+    .catch(e => {
+      throw e;
+    });
+};
+
 // `getComponent` dynamically loads routes.
 // https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={importHome} />
-    <Route path="(:name)" getComponent={importAccountInfo} />
+    <Route path="@(:name)" getComponent={importAccountInfo} />
+    <Route path="transfer" getComponent={importTransfer} />
   </Route>
 );
 
@@ -38,6 +47,7 @@ const routes = (
 if (module.hot) {
   require('../components/Home'); // eslint-disable-line global-require
   require('../components/AccountInfo'); // eslint-disable-line global-require
+  require('../components/Transfer'); // eslint-disable-line global-require
 }
 
 export default routes;

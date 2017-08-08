@@ -5,8 +5,9 @@ import styles from './styles.scss';
 import {Provider} from 'mobx-react'
 import chain from '../../store/chain'
 
-function App({ children, params }) {
-  const homePage = Object.keys(params).length === 0
+function App({ children, location }) {
+  // console.log('location', location)
+  const homePage = location.pathname === '/' && location.hash === ''
   return (
     <div>
       <ul className={styles.nav}>
@@ -16,13 +17,8 @@ function App({ children, params }) {
           </Link>
         </li>
         <li className={styles.navItem}>
-          <Link className={styles.link} to="/eos">
-            Eos
-          </Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link className={styles.link} to="/inita">
-            InitA
+          <Link className={styles.link} to="/transfer#from=eos&to=inita&amount=1">
+            Transfer
           </Link>
         </li>
       </ul>

@@ -18,6 +18,7 @@ class AccountInfo extends Component {
   render () {
     const {chain, params} = this.props
     const account = chain.accounts.get(params.name).current()
+
     const ren = account.case({
       pending:   () => <div>Loading...</div>,
       rejected:  error => <div>Ooops.. {error.toString()}</div>,
