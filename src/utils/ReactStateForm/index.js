@@ -17,22 +17,17 @@ module.exports = reactForm
     @arg {string} name - form state will appear in this.state[name]
     @arg {array} fields - ['username', 'save', ...]
     @arg {object} initialValues required for checkboxes {save: false, ...}
-    @arg {function} validation - values => ({ username: ! values.username ? 'Required' : null, ... })
 */
 function reactForm(instance, {
     name = 'form',
     fields,
     initialValues,
-    validation = () => {},
     submitInitialValues = true,
     debug = false
 }) {
     if(typeof instance !== 'object') throw new TypeError('instance is a required object')
     if(!Array.isArray(fields)) throw new TypeError('fields is a required array')
     if(typeof initialValues !== 'object') throw new TypeError('initialValues is a required object')
-
-    // Give API users access to this.props, this.state, etc
-    validation = validation.bind(instance)
 
     let state = instance.state
     if(!state) {
@@ -203,6 +198,10 @@ function reactForm(instance, {
             form.submitting = true
             form.message = onMessage(instance, form, '')
 
+            if(instance.onSpinner) {
+              form.spinner = instance.onSpinner(true)
+            }
+
             instance.setState(
                 {[name]: form},
                 () => {
@@ -255,6 +254,9 @@ function reactForm(instance, {
                         form.submit.disabled = formValid
                         form.submitting = false
                         form.message = onMessage(instance, form, formResult ? formResult.message : '')
+                        if(instance.onSpinner) {
+                          form.spinner = instance.onSpinner(false)
+                        }
 
                         instance.setState({[name]: form}, ()=> {
                             if(formValid) {
@@ -283,14 +285,11 @@ function reactForm(instance, {
         const promises = []
         const fieldData = getData(fields, instance.state)
 
-        // const validations = validation(getData(fields, instance.state)) || {}
         for(const f of fields) {
             const fieldName = getName(f)
             if(fieldName.length < 2) {
                 throw new Error(`Please use a longger fielld name: ${fieldName}`)
             }
-
-            // const validate = validations[fieldName]
 
             // Validation Method: onMyField = ({myfielld}) => myfield === 'valid'
             const method = `check${fieldName[0].toUpperCase()}${fieldName.substring(1)}`

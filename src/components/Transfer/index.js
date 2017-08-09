@@ -77,7 +77,7 @@ class Transfer extends Component {
     return new Promise(resolve => {
       setTimeout(() => {
         resolve('Thank You')
-      }, 500)
+      }, 1000)
     })
   }
 
@@ -86,6 +86,12 @@ class Transfer extends Component {
       return <div>&nbsp;</div>
 
     return <div style={{color: element.valid ? 'green' : 'red'}}>{message}&nbsp;</div>
+  }
+
+  onSpinner = (on) => {
+    if(on) {
+      return <div className={styles.spinner}></div>
+    }
   }
 
   render () {
@@ -152,6 +158,7 @@ class Transfer extends Component {
             </div>
 
             {form.message}
+            {form.spinner}
 
           </fieldset>
         </form>
