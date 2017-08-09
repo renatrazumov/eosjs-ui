@@ -81,17 +81,15 @@ class Transfer extends Component {
     })
   }
 
+  onSubmitEvent = (form, preSubmit) => {
+    form.spinner = preSubmit ? <div className={styles.spinner}></div> : null
+  }
+
   onMessage = (element, message) => {
     if(/Required|Account not found/.test(message) && !element.blur)
       return <div>&nbsp;</div>
 
     return <div style={{color: element.valid ? 'green' : 'red'}}>{message}&nbsp;</div>
-  }
-
-  onSpinner = (on) => {
-    if(on) {
-      return <div className={styles.spinner}></div>
-    }
   }
 
   render () {

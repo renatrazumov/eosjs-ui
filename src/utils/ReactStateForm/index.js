@@ -198,8 +198,8 @@ function reactForm(instance, {
             form.submitting = true
             form.message = onMessage(instance, form, '')
 
-            if(instance.onSpinner) {
-              form.spinner = instance.onSpinner(true)
+            if(instance.onSubmitEvent) {
+              instance.onSubmitEvent(form, true)
             }
 
             instance.setState(
@@ -254,8 +254,8 @@ function reactForm(instance, {
                         form.submit.disabled = formValid
                         form.submitting = false
                         form.message = onMessage(instance, form, formResult ? formResult.message : '')
-                        if(instance.onSpinner) {
-                          form.spinner = instance.onSpinner(false)
+                        if(instance.onSubmitEvent) {
+                          instance.onSubmitEvent(form, false)
                         }
 
                         instance.setState({[name]: form}, ()=> {
