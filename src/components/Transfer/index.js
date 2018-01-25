@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
-import {ULong, isName} from 'eosjs/utils/format'
+import {ULong, isName} from 'eosjs'
 
 import styles from './styles.scss'
 import form from '../../utils/ReactStateForm'
