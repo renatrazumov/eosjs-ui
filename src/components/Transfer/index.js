@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {observer, inject} from 'mobx-react';
-import {ULong, isName} from 'eosjs/utils/format'
+import {modules} from 'eosjs'
 
 import styles from './styles.scss'
 import form from '../../utils/ReactStateForm'
+
+const {ULong, isName} = modules.format
 
 @inject('chain')
 @observer

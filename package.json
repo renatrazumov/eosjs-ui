@@ -25,7 +25,7 @@
     "babel-preset-kyt-react": "0.2.0",
     "compression": "1.6.2",
     "config": "^1.26.1",
-    "eosjs": "^1.0.12",
+    "eosjs": "^6.1.0",
     "express": "4.15.3",
     "is-in-browser": "^1.1.3",
     "kyt": "0.7.0",
