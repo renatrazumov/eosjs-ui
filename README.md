@@ -1,5 +1,8 @@
 # About
 
+Deprecated .. this is for reference only..
+
+
 General purpose web interface for the EOS blockchain.
 
 Status: Alpha (for developers)
